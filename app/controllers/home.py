@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from flask_googlemaps import GoogleMaps, Map
 import csv
 from urllib.parse import unquote
@@ -8,7 +8,7 @@ import os
 blueprint = Blueprint('home', __name__)
 
 
-@blueprint.route('/')
+@blueprint.route('/', methods=['GET', 'POST'])
 def index():
         ms = []
         ps = []
