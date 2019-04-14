@@ -14,7 +14,7 @@ def create_app(config_object=settings):
     app.config.from_object(config_object)
 
 
-    gm = GoogleMaps(app, key="AIzaSyCt_HeBKWlD7QZg2jH4qSaqEMPYYflkxYU")
+    gm = GoogleMaps(app, key="REDACTED")
 
     register_extensions(app)
     register_blueprints(app)
