@@ -11,7 +11,11 @@ blueprint = Blueprint('home', __name__)
 @blueprint.route('/')
 def index():
         ms = []
-        print(os.path.abspath(__file__))
+        ps = []
+        r = csv.reader(open('app/coords.csv', 'r'))
+        next(r)
+        for row in r:
+                ps.append('new google.maps.LatLng('+row[1]+', '+row[2]+')')
         r = csv.reader(open('app/centerLocations.csv', 'r'))
         next(r)
         for row in r:
@@ -34,8 +38,8 @@ def index():
 				hasoverlay=True,
 		        style="height:450px;width:100%;")
 
-        return render_template('home/index.html', sndmap=sndmap)
-		
+        return render_template('home/index.html', sndmap=sndmap, points=','.join(ps))
+
 @blueprint.route('/about.html')
 def about():
 	sndmap = Map(
